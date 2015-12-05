@@ -16,7 +16,7 @@
     "url": "https://github.com/TheHumanEffort/the-ng-utils/issues"
   },
   "homepage": "https://github.com/TheHumanEffort/the-ng-utils#readme",
-  "dependencies": {
+  "devDependencies": {
     "json": "^9.0.3"
   }
 }
