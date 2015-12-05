@@ -1,10 +1,10 @@
 {
   "name": "the-ng-utils",
-  "version": "0.1.0",
+  "version": "v0.0.1b4",
   "description": "The Human Effort's Angular Utilities",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "sh -e 'cat src/*.js > index.js'"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,8 @@
   "bugs": {
     "url": "https://github.com/TheHumanEffort/the-ng-utils/issues"
   },
-  "scripts": {
-    "build": "sh -e 'cat src/*.js > index.js'"
-  },
-  "homepage": "https://github.com/TheHumanEffort/the-ng-utils#readme"
+  "homepage": "https://github.com/TheHumanEffort/the-ng-utils#readme",
+  "dependencies": {
+    "json": "^9.0.3"
+  }
 }
