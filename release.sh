@@ -9,7 +9,7 @@ cat src/*.js > index.js
 echo Committing index
 git commit index.js -m "Compiled - $2"
 echo version bump in json
-node_modueles/.bin/json -I -f package.json -e 'this.version = "'$1'"'
+node_modules/.bin/json -I -f package.json -e "this.version = '$1';"
 echo committing versoin bump
 git commit package.json -m "Version bump."
 echo tagging.. 
