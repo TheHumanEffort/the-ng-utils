@@ -1,6 +1,6 @@
 {
   "name": "the-ng-utils",
-  "version": "v0.0.2b3",
+  "version": "v0.0.3b2",
   "description": "The Human Effort's Angular Utilities",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/TheHumanEffort/the-ng-utils#readme",
   "devDependencies": {
     "json": "^9.0.3"
+  },
+  "dependencies": {
+    "babel": "^6.3.13",
+    "babel-cli": "^6.3.13"
   }
 }
