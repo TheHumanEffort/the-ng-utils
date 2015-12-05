@@ -1,4 +1,5 @@
-angular.module('the-common').service('Falter',function() {
+angular.module('the-utils',[]);
+angular.module('the-utils').service('Falter',function() {
   var Falter = {
     exception: function(exception,context) {
       
@@ -13,7 +14,7 @@ angular.module('the-common').service('Falter',function() {
 
   return window.Falter = Falter;
 });
-angular.module('the-common').directive('statefulClick',function(Falter) {
+angular.module('the-utils').directive('statefulClick',function(Falter) {
   return {
     restrict: 'A',
     /* Doesn't actually care about isolated scope, but these are
