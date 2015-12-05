@@ -1,4 +1,4 @@
-angular.module('the-common').service('Falter',function() {
+angular.module('the-utils').service('Falter',function() {
   var Falter = {
     exception: function(exception,context) {
       

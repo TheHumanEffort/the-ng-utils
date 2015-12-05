@@ -1,4 +1,4 @@
-angular.module('the-common').directive('statefulClick',function(Falter) {
+angular.module('the-utils').directive('statefulClick',function(Falter) {
   return {
     restrict: 'A',
     /* Doesn't actually care about isolated scope, but these are
