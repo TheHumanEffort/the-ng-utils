@@ -1,0 +1,22 @@
+{
+  "name": "the-ng-utils",
+  "version": "0.1.0",
+  "description": "The Human Effort's Angular Utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheHumanEffort/the-ng-utils.git"
+  },
+  "author": "Daniel Staudigel <dan@thehumaneffort.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/TheHumanEffort/the-ng-utils/issues"
+  },
+  "scripts": {
+    "build": "sh -e 'cat src/*.js > index.js'"
+  },
+  "homepage": "https://github.com/TheHumanEffort/the-ng-utils#readme"
+}
