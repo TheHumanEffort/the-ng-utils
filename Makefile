@@ -34,3 +34,6 @@ $(TEMPLATES_JS): $(shell find $(SRC)/components -name '*.html')
 
 $(TARGET): src/_init.js $(JS_COMPONENTS) $(TEMPLATES_JS)
 	cat $^ > $@
+
+watch:
+	watchman-make -p 'src/**/*' -t $(TARGET)
