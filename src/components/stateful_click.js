@@ -10,7 +10,7 @@ angular.module('the-utils').directive('statefulClick',function(Falter) {
         var cl = attrs.statefulClass || 'active';
         elem.addClass(cl);
         var ret = scope.$eval(attrs.statefulClick,{ $event : event });
-        
+
         if(ret && ret.then) {
           ret.then(function(res) {
             elem.removeClass(cl);
@@ -22,7 +22,7 @@ angular.module('the-utils').directive('statefulClick',function(Falter) {
           elem.removeClass(cl);
         }
       }
-      
+
       elem.on('click',onClick);
 
       scope.$on('$destroy',function() {
