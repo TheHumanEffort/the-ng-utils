@@ -2,13 +2,13 @@ angular.module('the-utils',[]);
 angular.module('the-utils').service('Falter',function() {
   var Falter = {
     exception: function(exception,context) {
-      
+
     },
     network: function(networkError,context) {
-      
+
     },
     error: function(context) {
-      
+
     }
   };
 
@@ -26,7 +26,7 @@ angular.module('the-utils').directive('statefulClick',function(Falter) {
         var cl = attrs.statefulClass || 'active';
         elem.addClass(cl);
         var ret = scope.$eval(attrs.statefulClick,{ $event : event });
-        
+
         if(ret && ret.then) {
           ret.then(function(res) {
             elem.removeClass(cl);
@@ -38,7 +38,7 @@ angular.module('the-utils').directive('statefulClick',function(Falter) {
           elem.removeClass(cl);
         }
       }
-      
+
       elem.on('click',onClick);
 
       scope.$on('$destroy',function() {
@@ -47,3 +47,5 @@ angular.module('the-utils').directive('statefulClick',function(Falter) {
     }
   };
 });
+angular.module("the-utils").run(["$templateCache",function($templateCache) {
+}]);

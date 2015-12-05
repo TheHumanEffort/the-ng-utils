@@ -1,6 +1,6 @@
 {
   "name": "the-ng-utils",
-  "version": "v0.0.3b4",
+  "version": "v0.0.3b5",
   "description": "The Human Effort's Angular Utilities",
   "main": "index.js",
   "scripts": {
