@@ -1,0 +1,11 @@
+<div ng-show="!loading && isError" class="errorp">
+  <div ng-if="errorPage" ng-include="errorPage" class="error-page"></div>
+  <div ng-if="!errorPage">
+    <h3>Net error {{ netCheck.status }}</h3>
+    <p>{{ netCheck.config.url }} : {{ netCheck.statusText }}</p>
+    <p>{{ netCheck.data.error.description }}</p>
+  </div>
+</div>
+<div ng-show="!loading && !isError" class="ng-hide">
+  <ng-transclude/>
+</div>
