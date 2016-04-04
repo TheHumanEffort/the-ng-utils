@@ -24,7 +24,7 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading) {
               //  $ionicLoading.hide();
             }
 
-            console.log('netCheck: ', scope.netCheck, 'statusText' in scope.netCheck && Math.floor(scope.netCheck.status / 100) != 2);
+            //            console.log('netCheck: ', scope.netCheck, 'statusText' in scope.netCheck && Math.floor(scope.netCheck.status / 100) != 2);
             scope.loading = false;
             scope.isError = 'statusText' in scope.netCheck && Math.floor(scope.netCheck.status / 100) != 2;
 
