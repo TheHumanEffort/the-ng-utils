@@ -31,7 +31,7 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading) {
             if (scope.isError) {
               var code = code = scope.netCheck.status;
               if ([0, 404, 500, 403].indexOf(code) != -1) {
-                scope.errorPage = 'the-utils/components/net_check/errors/' + code + '.html';
+                scope.errorPage = 'the-utils/components/errors/' + code + '.html';
               }
             }
           } else {
