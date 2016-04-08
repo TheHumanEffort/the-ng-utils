@@ -1,4 +1,37 @@
 angular.module('the-utils',[]);
+angular.module('the-utils').directive('theError', function() {
+  return {
+    restrict: 'A',
+    scope: {
+      theError: '=',
+    },
+    templateUrl: 'the-utils/components/error/error.html',
+    link: function(scope, element, attrs) {
+      scope.$watch('theError', function() {
+        scope.errorPage = null;
+        try {
+          if (scope.theError) {
+            scope.loading = false;
+            scope.isError = 'statusText' in scope.theError && Math.floor(scope.theError.status / 100) != 2;
+
+            if (scope.isError) {
+              var code = code = scope.theError.status;
+              if ([0, 404, 500, 403].indexOf(code) != -1) {
+                scope.errorPage = 'the-utils/components/net_check/errors/' + code + '.html';
+              }
+            }
+          } else {
+            scope.loading = true;
+            scope.isError = false;
+          }
+        } catch (x) {
+          debugger;
+        }
+
+      });
+    },
+  };
+});
 angular.module('the-utils').service('Falter',function() {
   var Falter = {
     exception: function(exception,context) {
@@ -263,6 +296,7 @@ angular.module('the-utils').directive('statefulClick', function (Falter) {
   };
 });
 angular.module("the-utils").run(["$templateCache",function($templateCache) {
+$templateCache.put("the-utils/components/error/error.html","<span ng-if=\"errorPage\" ng-include=\"errorPage\" class=\"error-page\"></span> ");
 $templateCache.put("the-utils/components/net_check/errors/0.html","<i class=\"ion ion-sad-outline\"></i> <h2>No network connection.</h2> <p>Please check your network settings, and try again.<p> ");
 $templateCache.put("the-utils/components/net_check/errors/403.html","<i class=\"ion ion-sad-outline\"></i> <h2>Not Allowed</h2> <p>You aren't allowed here, not sure how you got here, though...</p> <button class=\"button button-clear\" ng-click=\"displayConversationsList()\">   Support Chat </button>  ");
 $templateCache.put("the-utils/components/net_check/errors/404.html","<i class=\"ion ion-sad-outline\"></i> <h2>Not Found</h2> <p>Unfortunately, we can't find what you're looking for.</p> <p><a ui-sref=\"app.browse\">Browse</a></p> <button class=\"button button-clear\" ng-click=\"displayConversationsList()\">   Support Chat </button> ");
