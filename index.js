@@ -124,6 +124,35 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading) {
     },
   };
 });
+angular.module('the-utils').directive('theRefresher', function() {
+  console.log('LOADING REFRESHER');
+  return {
+    restrict: 'E',
+    scope: {
+      resource: '=',
+      onRefresh: '&',
+    },
+    transclude: true,
+    templateUrl: 'the-utils/components/refresher/refresher.html',
+    link: function(scope, element, attrs) {
+
+      scope.refresh = function() {
+        let p;
+        scope.error = null;
+
+        if (attrs.onRefresh) {
+          p = scope.onRefresh({ });
+        } else if (scope.resource) {
+          p = scope.resource.DSRefresh();
+        }
+
+        p.catch((err) => scope.error = err)
+          .finally((res) => scope.$broadcast('scroll.refreshComplete'));
+      };
+
+    },
+  };
+});
 // UtilsSignupCtrl:
 // UtilsSignupCtrl is a simple way to manage signup forms, because, let's face it,
 // they're all pretty similar.
@@ -226,4 +255,5 @@ $templateCache.put("the-utils/components/net_check/errors/403.html","<i class=\"
 $templateCache.put("the-utils/components/net_check/errors/404.html","<i class=\"ion ion-sad-outline\"></i> <h2>Not Found</h2> <p>Unfortunately, we can't find what you're looking for.</p> <p><a ui-sref=\"app.browse\">Browse</a></p> <button class=\"button button-clear\" ng-click=\"displayConversationsList()\">   Support Chat </button> ");
 $templateCache.put("the-utils/components/net_check/errors/500.html","<i class=\"ion ion-sad-outline\"></i> <h2>Server Error</h2> <p>Apparently, something went wrong at HQ - we'll look into it ASAP, but feel free to give us more details by contacting us below.</p> <br/> <button class=\"button button-clear\" ng-click=\"displayConversationsList()\">   Support Chat </button> ");
 $templateCache.put("the-utils/components/net_check/net_check.html","<div ng-show=\"!loading && isError\" class=\"errorp\">   <div ng-if=\"errorPage\" ng-include=\"errorPage\" class=\"error-page\"></div>   <div ng-if=\"!errorPage\">     <h3>Net error {{ netCheck.status }}</h3>     <p>{{ netCheck.config.url }} : {{ netCheck.statusText }}</p>     <p>{{ netCheck.data.error.description }}</p>   </div> </div> <div ng-show=\"!loading && !isError\" class=\"ng-hide\">   <ng-transclude/> </div> ");
+$templateCache.put("the-utils/components/refresher/refresher.html","<ion-refresher on-refresh=\"refresh()\" pulling-text=\"Pull to refresh...\"> </ion-refresh>      ");
 }]);
