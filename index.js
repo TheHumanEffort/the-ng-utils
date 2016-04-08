@@ -47,16 +47,29 @@ angular.module('the-utils').service('Falter',function() {
 
 angular.module('the-utils').controller('UtilsLoginCtrl', function(Api, $scope) {
   var ctrl = this;
+  ctrl.statusType = 'status';
+  ctrl.status = { message: 'Ready to log in!' };
+
   this.login = function(hash) {
-    return Api.login(hash).catch((x) => {
-      ctrl.statusType = 'error';
-      ctrl.status = { message: x.message };
-    });
+    ctrl.statusType = 'status';
+    ctrl.status = { message: 'Checking password...' };
+
+    return Api.login(hash).then(
+      () => {
+        ctrl.statusType = 'status';
+        ctrl.status = { message: 'Logging in...' };
+      },
+
+      (x) => {
+        ctrl.statusType = 'error';
+        ctrl.status = { message: x.message };
+      });
   };
 
   this.recoverPassword = function(hash) {
     return Api.recoverPassword(hash).catch((x) => {
       ctrl.statusType = 'error';
+      console.log(x);
       ctrl.status = { message: x };
     });
   };
