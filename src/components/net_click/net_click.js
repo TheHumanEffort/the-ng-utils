@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 angular.module('the-utils').directive('netClick', function() {
   return {
     restruct: 'A',
@@ -27,6 +29,9 @@ angular.module('the-utils').directive('netClick', function() {
               if ([0, 404, 500, 403].indexOf(code) != -1) {
                 scope.tmpl = 'the-utils/components/errors/' + code + '.html';
               }
+            } else if ('meta' in err && err.meta.error == 'invalid') {
+              scope.tmpl = 'the-utils/components/errors/invalid.html';
+              scope.error = { keys: _.keys(err.meta.messages), object: err };
             } else {
               scope.error = err;
             }

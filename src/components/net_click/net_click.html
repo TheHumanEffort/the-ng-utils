@@ -5,5 +5,8 @@
   <span ng-if="tmpl" ng-include="tmpl"></span>
 </span>
 <span ng-show="error" class="ng-hide">
-  {{ error }}
+  <span ng-if="tmpl" ng-include="tmpl"></span>
+  <span ng-if="!tmpl">
+    {{ error }}
+  </span>
 </span>
