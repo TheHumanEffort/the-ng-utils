@@ -1,4 +1,4 @@
-angular.module('the-utils').directive('netCheck', function($ionicLoading) {
+angular.module('the-utils').directive('netCheck', function($ionicLoading, $timeout) {
   return {
     restrict: 'A',
     scope: {
@@ -8,9 +8,9 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading) {
     transclude: true,
     templateUrl: 'the-utils/components/net_check/net_check.html',
     link: function(scope, element, attrs) {
-      if (scope.showLoading !== false) {
-        // $ionicLoading.show( { scope : scope });
-      }
+      //      if (scope.showLoading !== false) {
+      // $ionicLoading.show( { scope : scope });
+      //      }
 
       scope.displayConversationsList = function() {
         intercom.displayConversationsList();
@@ -19,13 +19,19 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading) {
       scope.$watch('netCheck', function() {
         scope.errorPage = null;
         try {
+          console.log('NET CEHCK: ', (typeof scope.netCheck), scope.netCheck && scope.netCheck.email);
+          console.log('JSON: ', JSON.stringify(scope.netCheck));
           if (scope.netCheck) {
-            if (scope.showLoading !== false) {
-              //  $ionicLoading.hide();
-            }
+            //          if (scope.showLoading !== false) {
+            //  $ionicLoading.hide();
+            //            }
 
-            //            console.log('netCheck: ', scope.netCheck, 'statusText' in scope.netCheck && Math.floor(scope.netCheck.status / 100) != 2);
+            //            console.log('netCheck: ', scope.netCheck,
+            // 'statusText' in scope.netCheck &&
+            // Math.floor(scope.netCheck.status / 100) != 2);
+
             scope.loading = false;
+
             scope.isError = 'statusText' in scope.netCheck && Math.floor(scope.netCheck.status / 100) != 2;
 
             if (scope.isError) {
@@ -43,6 +49,8 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading) {
         }
 
       });
+
+      element.addClass('ready');
 
       //      scope.isError =
     },
