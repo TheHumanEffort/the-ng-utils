@@ -68,6 +68,8 @@ angular.module('the-utils').controller('UtilsLoginCtrl', function(Api, $scope) {
   };
 
   Api.on('status', updateStatus);
-  $scope.$on('$destroy', () => { Api.off('status', updateStatus); });
 
+  $scope.$on('$destroy', () => {
+    Api.off('status', updateStatus);
+  });
 });
