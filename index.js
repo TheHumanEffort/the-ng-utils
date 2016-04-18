@@ -143,8 +143,7 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading, $timeo
       scope.$watch('netCheck', function() {
         scope.errorPage = null;
         try {
-          console.log('NET CEHCK: ', (typeof scope.netCheck), scope.netCheck && scope.netCheck.email);
-          console.log('JSON: ', JSON.stringify(scope.netCheck));
+
           if (scope.netCheck) {
             //          if (scope.showLoading !== false) {
             //  $ionicLoading.hide();
