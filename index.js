@@ -184,9 +184,9 @@ import _ from 'lodash';
 angular.module('the-utils').directive('netClick', function() {
   return {
     restruct: 'A',
-    /*    scope: {
-          netClick: '&',
-        }, */
+    scope: {
+      netClick: '&',
+    },
     transclude: true,
     templateUrl: 'the-utils/components/net_click/net_click.html',
     link: function(scope, elem, attrs) {
@@ -197,7 +197,8 @@ angular.module('the-utils').directive('netClick', function() {
 
         var cl = attrs.statefulClass || 'active';
         elem.addClass(cl);
-        var ret = scope.$eval(attrs.netClick, { $event: event });
+
+        var ret = scope.netClick({ $event: event });
 
         if (ret && ret.then) {
           ret.then(function(res) {
