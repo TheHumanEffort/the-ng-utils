@@ -132,8 +132,8 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading, $timeo
     transclude: true,
     templateUrl: 'the-utils/components/net_check/net_check.html',
     link: function(scope, element, attrs) {
-      //      if (scope.showLoading !== false) {
-      // $ionicLoading.show( { scope : scope });
+      //    if (scope.showLoading !== false) {
+      //        $ionicLoading.show({ scope: scope });
       //      }
 
       scope.displayConversationsList = function() {
@@ -143,10 +143,9 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading, $timeo
       scope.$watch('netCheck', function() {
         scope.errorPage = null;
         try {
-
-          if (scope.netCheck) {
-            //          if (scope.showLoading !== false) {
-            //  $ionicLoading.hide();
+          if (scope.netCheck !== null && scope.netCheck !== undefined) {
+            //            if (scope.showLoading !== false) {
+            //              $ionicLoading.hide();
             //            }
 
             //            console.log('netCheck: ', scope.netCheck,
@@ -365,7 +364,7 @@ $templateCache.put("the-utils/components/errors/403.html","<i class=\"ion ion-sa
 $templateCache.put("the-utils/components/errors/404.html","<i class=\"ion ion-sad-outline\"></i> <h2>Not Found</h2> <p>Unfortunately, we can't find what you're looking for.</p> <p><a ui-sref=\"app.browse\">Browse</a></p> <button class=\"button button-clear\" ng-click=\"displayConversationsList()\">   Support Chat </button> ");
 $templateCache.put("the-utils/components/errors/500.html","<i class=\"ion ion-sad-outline\"></i> <h2>Server Error</h2> <p>Apparently, something went wrong at HQ - we'll look into it ASAP, but feel free to give us more details by contacting us below.</p> <br/> <button class=\"button button-clear\" ng-click=\"displayConversationsList()\">   Support Chat </button> ");
 $templateCache.put("the-utils/components/errors/invalid.html","<i class=\"ion ion-sad-outline\"></i> <h2>Invalid {{ error.keys }}</h2> <p>Please check for errors and try again.<p> ");
-$templateCache.put("the-utils/components/net_check/net_check.html","<div ng-show=\"!loading && isError\" class=\"errorp\">   <div ng-if=\"errorPage\" ng-include=\"errorPage\" class=\"error-page\"></div>   <div ng-if=\"!errorPage\">     <h3>Net error {{ netCheck.status }}</h3>     <p>{{ netCheck.config.url }} : {{ netCheck.statusText }}</p>     <p>{{ netCheck.data.error.description }}</p>   </div> </div> <div ng-show=\"!loading && !isError\" class=\"ng-hide\">   <ng-transclude /> </div> ");
+$templateCache.put("the-utils/components/net_check/net_check.html","<div ng-show=\"!loading && isError\" class=\"errorp\">   <div ng-if=\"errorPage\" ng-include=\"errorPage\" class=\"error-page\"></div>   <div ng-if=\"!errorPage\">     <h3>Net error {{ netCheck.status }}</h3>     <p>{{ netCheck.config.url }} : {{ netCheck.statusText }}</p>     <p>{{ netCheck.data.error.description }}</p>   </div> </div> <div ng-show=\"!loading && !isError\" class=\"ng-hide\">   <ng-transclude /> </div> <div ng-show=\"loading\">   <div style=\"text-align: center; padding-top: 1em;\">     <ion-spinner></ion-spinner>   </div> </div> ");
 $templateCache.put("the-utils/components/net_click/net_click.html","<span ng-show=\"!netError && !error\">   <ng-transclude /> </span> <span ng-show=\"netError\" class=\"ng-hide\" >   <span ng-if=\"tmpl\" ng-include=\"tmpl\"></span> </span> <span ng-show=\"error\" class=\"ng-hide\">   <span ng-if=\"tmpl\" ng-include=\"tmpl\"></span>   <span ng-if=\"!tmpl\">     {{ error }}   </span> </span> ");
 $templateCache.put("the-utils/components/refresher/refresher.html","<ion-refresher on-refresh=\"refresh()\" pulling-text=\"Pull to refresh...\"> </ion-refresh>      ");
 }]);
