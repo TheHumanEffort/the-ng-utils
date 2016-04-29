@@ -9,3 +9,8 @@
 <div ng-show="!loading && !isError" class="ng-hide">
   <ng-transclude />
 </div>
+<div ng-show="loading">
+  <div style="text-align: center; padding-top: 1em;">
+    <ion-spinner></ion-spinner>
+  </div>
+</div>
