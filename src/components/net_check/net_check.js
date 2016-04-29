@@ -8,8 +8,8 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading, $timeo
     transclude: true,
     templateUrl: 'the-utils/components/net_check/net_check.html',
     link: function(scope, element, attrs) {
-      //      if (scope.showLoading !== false) {
-      // $ionicLoading.show( { scope : scope });
+      //    if (scope.showLoading !== false) {
+      //        $ionicLoading.show({ scope: scope });
       //      }
 
       scope.displayConversationsList = function() {
@@ -19,10 +19,9 @@ angular.module('the-utils').directive('netCheck', function($ionicLoading, $timeo
       scope.$watch('netCheck', function() {
         scope.errorPage = null;
         try {
-
-          if (scope.netCheck) {
-            //          if (scope.showLoading !== false) {
-            //  $ionicLoading.hide();
+          if (scope.netCheck !== null && scope.netCheck !== undefined) {
+            //            if (scope.showLoading !== false) {
+            //              $ionicLoading.hide();
             //            }
 
             //            console.log('netCheck: ', scope.netCheck,
