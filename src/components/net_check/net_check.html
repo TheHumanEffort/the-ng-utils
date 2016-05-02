@@ -6,7 +6,7 @@
     <p>{{ netCheck.data.error.description }}</p>
   </div>
 </div>
-<div ng-show="!loading && !isError" class="ng-hide">
+<div ng-if="!loading && !isError">
   <ng-transclude />
 </div>
 <div ng-show="loading">
