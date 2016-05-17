@@ -1,4 +1,4 @@
-<div ng-show="!loading && isError" class="errorp">
+<div ng-if="!loading && isError" class="error">
   <div ng-if="errorPage" ng-include="errorPage" class="error-page"></div>
   <div ng-if="!errorPage">
     <h3>Net error {{ netCheck.status }}</h3>
@@ -9,7 +9,7 @@
 <div ng-if="!loading && !isError">
   <ng-transclude />
 </div>
-<div ng-show="loading">
+<div ng-if="loading">
   <div style="text-align: center; padding-top: 1em;">
     <ion-spinner></ion-spinner>
   </div>
