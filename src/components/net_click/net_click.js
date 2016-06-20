@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-angular.module('the-utils').directive('netClick', function() {
+angular.module('the-utils').directive('netClick', function($timeout) {
   return {
     restruct: 'A',
     scope: {
@@ -9,6 +9,12 @@ angular.module('the-utils').directive('netClick', function() {
     transclude: true,
     templateUrl: 'the-utils/components/net_click/net_click.html',
     link: function(scope, elem, attrs) {
+      function reset() {
+        scope.netError = null;
+        scope.error = null;
+        scope.tmpl = null;
+      }
+
       function onClick(event) {
         scope.netError = null;
         scope.error = null;
@@ -36,6 +42,8 @@ angular.module('the-utils').directive('netClick', function() {
             } else {
               scope.error = err;
             }
+
+            $timeout(reset, 5000);
 
             elem.removeClass(cl);
           });
